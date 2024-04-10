@@ -46,7 +46,7 @@ public class MathApplication {
         int differenceSquaredX = differenceX * differenceX;
         int differenceSquaredY = differenceY * differenceY;
 
-        // add squared values
+        // add squared values together
         int sumDifference = differenceSquaredX + differenceSquaredY;
 
         // get the distance
