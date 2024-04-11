@@ -14,8 +14,12 @@ public class SandwichShop {
         int sandwichType = scanner.nextInt();
         scanner.nextLine();
 
+        System.out.print("Would you like that loaded? (Yes/No) ");
+        String loaded = scanner.nextLine();
+
         System.out.print("Please enter your age: ");
         int age = scanner.nextInt();
+        scanner.nextLine();
 
         double price = 0;
 
@@ -31,6 +35,12 @@ public class SandwichShop {
             price = price - (price*0.1);
         } else if (age >= 65) {
             price = price - (price*0.2);
+        }
+
+        if (loaded.equalsIgnoreCase("yes") && sandwichType == 1){
+            price += 1.0;
+        } else if (loaded.equalsIgnoreCase("yes") && sandwichType == 2) {
+            price += 1.75;
         }
 
         System.out.printf("Your total is: $%.2f", price);
