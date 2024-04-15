@@ -29,13 +29,13 @@ public class FullNameApplication {
         String results;
         String fullName;
 
-        // If user doesn't input a middle name
+        // If user doesn't input a middle name or suffix
         if (middleName.isEmpty() && suffix.isEmpty()){
             results = "%s %s";
-            fullName = String.format(results, firstName,lastName).trim();
+            fullName = String.format(results, firstName,lastName);
         } else if (middleName.isEmpty()){ // If they do
             results = "%s %s, %s";
-            fullName = String.format(results, firstName, lastName,suffix).trim();
+            fullName = String.format(results, firstName, lastName,suffix);
         } else {
             results = "%s %s %s, %s";
             fullName = String.format(results, firstName,middleName,lastName,suffix);
