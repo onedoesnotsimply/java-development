@@ -1,11 +1,14 @@
 import java.util.Scanner;
 
-public class CellPhoneService {
+public class CellPhoneService3 {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         CellPhone phone1 = new CellPhone();
         CellPhone phone2 = new CellPhone();
+
+        CellPhone phone3 = new CellPhone(2597153, "iPhone 15 Pro Max",
+                "Verizon", "888-555-1234", "Sandra");
 
         // Prompt users for information on their phones
         promptInfo(phone1);
@@ -16,8 +19,10 @@ public class CellPhoneService {
         display(phone2);
 
         // Dial other phone
-        phone1.dial(phone2.getPhoneNumber());
+        String number = phone2.getPhoneNumber();
+        phone1.dial(number);
         phone2.dial(phone1.getPhoneNumber());
+        phone3.dial(phone1);
 
     }
 
@@ -69,6 +74,14 @@ public class CellPhoneService {
             this.owner = "";
         }
 
+        public CellPhone(int serialNumber, String model, String carrier, String phoneNumber, String owner){
+            this.serialNumber = serialNumber;
+            this.model = model;
+            this.carrier = carrier;
+            this.phoneNumber = phoneNumber;
+            this.owner = owner;
+        }
+
         // Getter and Setter methods for parameters
         // Getters
         public int getSerialNumber() {
@@ -117,7 +130,12 @@ public class CellPhoneService {
         public void dial(String phoneNumber){
             System.out.printf("%s's phone is calling %s",this.owner, phoneNumber);
             System.out.println(" ");
+        }
 
+        // Overloaded dial method?
+        public void dial(CellPhone cellPhone){
+            System.out.printf("%s's phone is calling %s",this.owner, cellPhone.getPhoneNumber());
+            System.out.println(" ");
         }
     }
 }
