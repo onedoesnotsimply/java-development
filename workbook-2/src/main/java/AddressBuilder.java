@@ -17,7 +17,7 @@ public class AddressBuilder {
         System.out.println(" ");
         String shipping = shippingAddress();
         System.out.println(" ");
-        
+
         // Output information
         System.out.println(name);
         System.out.println(" ");

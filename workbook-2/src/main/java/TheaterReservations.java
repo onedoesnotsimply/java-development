@@ -14,6 +14,7 @@ public class TheaterReservations {
         // Prompt for date of reservation
         System.out.print("What date will you be coming? (MM/dd/yyyy): ");
         String dateString = scanner.nextLine();
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         LocalDate date = LocalDate.parse(dateString, formatter);
 
