@@ -29,7 +29,7 @@ public class Book {
     // Methods
     // Check out method
     public void checkOut(String name){
-        this.isCheckedOut = true; // Sets is checked out to true
+        this.isCheckedOut=true; // Sets is checked out to true
         this.checkedOutTo=name; // Saves the name of the person that checked out the book
     }
 
