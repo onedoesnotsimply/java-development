@@ -8,7 +8,6 @@ public class NeighborhoodLibrary {
     as well as check them out and return them themselves.
      */
 
-
     // Initialize the bookInventory array and scanner object
     static Book[] bookInventory = new Book[20];
     static Scanner scanner = new Scanner(System.in);
@@ -59,7 +58,10 @@ public class NeighborhoodLibrary {
                     showCheckedOutBooks();
                     break;
                 case 3:
-                    return; // When main returns the program quits
+                    return; // When main returns the program quits.
+                default:
+                    System.out.println("Invalid input");
+                    return;
             }
 
         }
@@ -94,7 +96,7 @@ public class NeighborhoodLibrary {
         for (Book book : bookInventory) {
             if (book.getId()==id){ // If id matches bookId
                 book.checkIn(); // Check in the book
-                System.out.println(book.getTitle()+" was checked in by "+book.getCheckedOutTo());
+                System.out.println(book.getTitle()+" was checked in");
             }
         }
     }
