@@ -16,6 +16,37 @@ public class SearchInventoryMap {
         // Create a scanner object for prompting
         Scanner scanner = new Scanner(System.in);
 
+        while(true){
+            // Prompt the user for the item id
+            System.out.print("What item # are you interested in? ");
+            int id = scanner.nextInt();
+            scanner.nextLine();
+            Product matchedProduct = inventory.get(id);
+
+            // If .get() returns null print an error message and quit the program
+            if (matchedProduct == null){
+                System.out.println("We don't carry that product");
+                scanner.close();
+                return;
+            }
+
+            // Print the item and close the scanner object
+            System.out.printf("We carry %s and the price is $%.2f", matchedProduct.getName(),matchedProduct.getPrice());
+            System.out.println(" ");
+            System.out.println(" ");
+            // Prompt whether they want to search for another item
+            System.out.print("Would you like to search again? (Y/N) : ");
+            String choice = scanner.nextLine();
+            if (choice.equalsIgnoreCase("y")){ // If yes
+                continue; // Continue to the next iteration of the loop
+            } else{
+                scanner.close(); // Close the scanner
+                return; // End the program
+            }
+        }
+
+        /* Loop-less version
+
         // Prompt the user for the item id
         System.out.print("What item # are you interested in? ");
         int id = scanner.nextInt();
@@ -31,7 +62,7 @@ public class SearchInventoryMap {
         // Print the item and close the scanner object
         System.out.printf("We carry %s and the price is $%.2f", matchedProduct.getName(),matchedProduct.getPrice());
         scanner.close();
-
+         */
     }
 
     public static void readCSV(){
