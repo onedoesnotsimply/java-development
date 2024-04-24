@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -18,6 +19,8 @@ public class FormatDates {
         // Print out formatted dates
         System.out.println(todayDate.format(backSlashFormatter)+"\n"+todayDate);
         System.out.println(todayDate.format(fullMonthFormatter));
-        System.out.println(todayDateTime.format(dayMonTimeFormatter));
+
+        String formattedDate = dayMonTimeFormatter.format(todayDateTime.atZone(ZoneId.of("GMT")));
+        System.out.println(formattedDate);
     }
 }
