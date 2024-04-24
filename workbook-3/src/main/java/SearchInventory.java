@@ -15,7 +15,7 @@ public class SearchInventory {
         // Populate the CSV
         readFromFile("inventory.csv");
 
-        // Print out the pre loaded inventory
+        // Print out the preloaded inventory
         System.out.println("Pre loaded inventory :");
         for (int i = 0; i < inventory.size(); i++){
             Product p = inventory.get(i);
@@ -73,7 +73,7 @@ public class SearchInventory {
         csvInventory.add(product);
     }
 
-    
+
     public static ArrayList<Product> getInventory() {
         ArrayList<Product> inventory = new ArrayList<Product>();
         // this method loads products into the inventory
