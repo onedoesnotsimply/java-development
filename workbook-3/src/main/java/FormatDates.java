@@ -14,13 +14,13 @@ public class FormatDates {
 
         // Create dates
         LocalDate todayDate = LocalDate.now();
-        LocalDateTime todayDateTime = LocalDateTime.now();
+        LocalDateTime todayDateTime = LocalDateTime.now(ZoneId.of("GMT"));
 
         // Print out formatted dates
         System.out.println(todayDate.format(backSlashFormatter)+"\n"+todayDate);
         System.out.println(todayDate.format(fullMonthFormatter));
 
-        String formattedDate = dayMonTimeFormatter.format(todayDateTime.atZone(ZoneId.of("GMT")));
-        System.out.println(formattedDate);
+        //String formattedDate = dayMonTimeFormatter.format(todayDateTime.atZone(ZoneId.of("GMT")));
+        System.out.println(todayDateTime.format(dayMonTimeFormatter));
     }
 }
