@@ -62,7 +62,7 @@ public class PayrollCalculator2 {
         double payRate = Double.parseDouble(tokens[3]);
 
         // Populate the employees
-        PayrollCalculator.Employee employee = new PayrollCalculator.Employee(id,name,hoursWorked,payRate);
+        Employee employee = new Employee(id,name,hoursWorked,payRate);
         // Return the id|name|gross pay in csv format
         return String.format("%d|%s|%.2f",employee.getEmployeeId(), employee.getName(), employee.getGrossPay());
     }
