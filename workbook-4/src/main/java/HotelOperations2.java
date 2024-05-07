@@ -56,11 +56,11 @@ public class HotelOperations2 {
         private boolean occupied;
         private boolean dirty;
 
-        public Room(int numberOfBeds, double price/*, boolean occupied, boolean dirty*/) {
+        public Room(int numberOfBeds, double price, boolean occupied, boolean dirty) {
             this.numberOfBeds = numberOfBeds;
             this.price = price;
-            this.occupied = false;
-            this.dirty = true;
+            this.occupied = occupied;
+            this.dirty = dirty;
         }
 
         public int getNumberOfBeds() {
