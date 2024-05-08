@@ -3,7 +3,7 @@ import com.pluralsight.*;
 import java.util.ArrayList;
 
 public class HotelExerciseDriver {
-    static ArrayList<Room> rooms = new ArrayList<Room>();
+    static ArrayList<Room> rooms = new ArrayList<>();
     public static void main(String[] args) {
         // Add the rooms to the arraylist
         populateRooms();
@@ -12,10 +12,10 @@ public class HotelExerciseDriver {
 
         // Create a reservation for a suite
         Reservation reservation1 = new Reservation("King", 3,false);
-        // Create reservations for double rooms, we only need to check for
-        Reservation reservation2 = new Reservation("", 2, true);
-        Reservation reservation3 = new Reservation("", 4, false);
-        Reservation reservation4 = new Reservation("", 2,false);
+        // Create reservations for double rooms, we only need to check for kings
+        Reservation reservation2 = new Reservation("double", 2, true);
+        Reservation reservation3 = new Reservation("double", 4, false);
+        Reservation reservation4 = new Reservation("double", 2,false);
 
         // Check the person into the suite
         Room bookedRoom = rooms.get(0);
