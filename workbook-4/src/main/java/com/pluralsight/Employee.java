@@ -19,6 +19,10 @@ public class Employee {
 
     }
 
+    public double getClockIn() {
+        return clockIn;
+    }
+
     public int getEmployeeId() {
         return employeeId;
     }
