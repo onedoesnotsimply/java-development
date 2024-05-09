@@ -5,10 +5,31 @@ import com.pluralsight.Deck;
 import java.util.Scanner;
 
 public class BlackJack {
+    // Static variables
+    static Scanner scanner = new Scanner(System.in);
+    static Hand hand1;
+    static Hand hand2;
+    static Deck deck;
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to BlackJack");
 
+        // Set up the game
+        setUp();
+
+        // Reveal who got closer to 21
+        System.out.printf("%s got %d\n", hand1.getName(),hand1.getValue());
+        System.out.printf("%s got %d\n", hand2.getName(),hand2.getValue());
+
+        if (hand1.getValue()>hand2.getValue()) {
+            System.out.printf("%s is the winner!", hand1.getName());
+        } else {
+            System.out.printf("%s is the winner!", hand2.getName());
+        }
+
+    }
+
+    public static void setUp() {
         // Prompt for names
         System.out.print("Enter the name of player 1 : ");
         String playerOneName = scanner.nextLine();
@@ -16,11 +37,11 @@ public class BlackJack {
         String playerTwoName = scanner.nextLine();
 
         // Create and shuffle the deck object
-        Deck deck = new Deck();
+        deck = new Deck();
         deck.shuffle();
 
-        Hand hand1 = new Hand(playerOneName);
-        Hand hand2 = new Hand(playerTwoName);
+        hand1 = new Hand(playerOneName);
+        hand2 = new Hand(playerTwoName);
 
         // Deal 2 cards to the users
         for (int i = 0; i < 2; i++) {
@@ -30,19 +51,8 @@ public class BlackJack {
             hand2.deal(card2); // Deal it to hand2
         }
 
-        // Record the score values
-        int handOneValue = hand1.getValue();
-        int handTwoValue = hand2.getValue();
-
         // Reveal who got closer to 21
-        System.out.printf("%s got %d\n", hand1.getName(),handOneValue);
-        System.out.printf("%s got %d\n", hand2.getName(),handTwoValue);
-
-        if (handOneValue>handTwoValue) {
-            System.out.printf("%s is the winner!", hand1.getName());
-        } else {
-            System.out.printf("%s is the winner!", hand2.getName());
-        }
-
+        // Prompt for hit or stand, call appropriate methods
     }
+        // Create methods for bonuses
 }
