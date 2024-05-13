@@ -21,9 +21,10 @@ public class BlackJack {
         System.out.printf("%s got %d\n", hand1.getName(),hand1.getValue());
         System.out.printf("%s got %d\n", hand2.getName(),hand2.getValue());
 
-        if (hand1.getValue()>hand2.getValue()) {
+
+        if ((hand1.getValue()>hand2.getValue()) && (hand1.getValue() <= 21)) {
             System.out.printf("%s is the winner!", hand1.getName());
-        } else {
+        } else if ((hand2.getValue()>hand1.getValue()) && (hand2.getValue() <= 21)) {
             System.out.printf("%s is the winner!", hand2.getName());
         }
 
