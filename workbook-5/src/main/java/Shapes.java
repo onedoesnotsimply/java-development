@@ -8,22 +8,6 @@ import java.util.Scanner;
 public class Shapes {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        /*
-        Shape shape = new Shape();
-        System.out.println(shape.getArea()); // returns 0
-
-        Rectangle rectangle = new Rectangle(5,10);
-        System.out.println(rectangle.getArea()); // returns area of rectangle
-
-        Box box = new Box(2,2,4);
-        System.out.println(box.getArea()); // returns the surface area of box
-
-        Square square = new Square(5,5);
-        System.out.println(square.getArea()); // returns the area of square
-
-        Square square1 = new Square(2,3);
-        System.out.println(square1.getArea()); // returns 0
-         */
         menu();
     }
 
@@ -33,7 +17,8 @@ public class Shapes {
                 What shape would you like to display?
                 1) Rectangle
                 2) Box
-                3) Square""");
+                3) Square
+                0) Exit""");
         int choice = scanner.nextInt();
 
         if (choice == 1){
