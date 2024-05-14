@@ -9,6 +9,7 @@ public class Shapes {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         menu();
+        scanner.close();
     }
 
     public static void menu() {
