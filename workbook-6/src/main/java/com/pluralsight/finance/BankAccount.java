@@ -27,6 +27,7 @@ public class BankAccount implements Valuable{
     public void deposit(double amount){
         // Add the deposited amount to balance
         balance+=amount;
+        System.out.printf("Deposited $%.2f into account\nThe new balance is $%.2f\n",amount,balance);
     }
 
     @Override
