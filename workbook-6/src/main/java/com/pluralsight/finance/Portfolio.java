@@ -23,7 +23,7 @@ public class Portfolio implements Valuable{
         Valuable valuable = null;
         double value = 0;
         for (Valuable asset : assets) {
-            if (asset.getValue()>value) {
+            if (asset.getValue()>value && (!(asset instanceof CreditCard))) {
                 value = asset.getValue();
                 valuable=asset;
             }
@@ -34,8 +34,7 @@ public class Portfolio implements Valuable{
     public Valuable getLeastValuable() {
         Valuable valuable = null;
         double value = assets.get(0).getValue();
-        for (Valuable asset : assets) {
-            //if (asset instanceof )
+        for (Valuable asset : assets) { // Rewrite to account for credit card
             if (asset.getValue()<value) {
                 value = asset.getValue();
                 valuable=asset;
@@ -48,7 +47,11 @@ public class Portfolio implements Valuable{
     public double getValue() {
         double value = 0;
         for (Valuable asset:assets){
-            value+=asset.getValue();
+            if (asset instanceof CreditCard) {
+                value-=asset.getValue();
+            } else {
+                value+=asset.getValue();
+            }
         }
         return value;
     }
