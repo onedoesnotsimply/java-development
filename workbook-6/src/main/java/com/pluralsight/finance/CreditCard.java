@@ -12,7 +12,6 @@ public class CreditCard implements Valuable {
     }
 
     public void charge(double amount) {
-        //
         balance-=amount;
     }
 
