@@ -37,6 +37,24 @@ public class Person implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        return this.lastName.compareTo(((Person) o).getLastName());
+        // Compare last names
+        if (this.lastName.compareTo(((Person) o).getLastName())==0) { // If the last names are the same
+            // Compare first names
+            if (this.firstName.compareTo(((Person) o).getFirstName()) == 0) { // If the first names are the same
+                // Compare age
+                if (this.age > ((Person) o).getAge()){
+                    return 1;
+                } else if (this.age==((Person) o).getAge()) {
+                    return 0;
+                } else {
+                    return -1;
+                }
+            } else {
+                return this.firstName.compareTo(((Person) o).getFirstName());
+            }
+        } else {
+            return this.lastName.compareTo(((Person) o).getLastName());
+        }
+
     }
 }
