@@ -11,6 +11,15 @@ public class CreditCard implements Valuable {
         this.balance=balance;
     }
 
+    @Override
+    public String toString() {
+        return "CreditCard{" +
+                "name='" + name + '\'' +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", balance=" + balance +
+                '}';
+    }
+
     public void charge(double amount) {
         balance-=amount;
     }

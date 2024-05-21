@@ -37,14 +37,6 @@ public class Person implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        //if (o instanceof Person) {
-        int comparedNameValue = this.lastName.compareTo(((Person) o).getLastName());
-        if (comparedNameValue == 0){
-            return 0;
-        } else if (comparedNameValue > 0) {
-            return 1;
-        } else  {//if (comparedNameValue < 0)
-            return -1;
-        }
+        return this.lastName.compareTo(((Person) o).getLastName());
     }
 }

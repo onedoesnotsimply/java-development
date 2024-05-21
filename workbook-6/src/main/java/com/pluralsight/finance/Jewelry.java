@@ -9,6 +9,15 @@ public class Jewelry extends FixedAsset {
     }
 
     @Override
+    public String toString() {
+        return "Jewelry{" +
+                "karat=" + karat +'\''+
+                ", name='" + name + '\'' +
+                ", marketValue=" + marketValue +
+                '}';
+    }
+
+    @Override
     public double getValue() {
         return karat;
     }

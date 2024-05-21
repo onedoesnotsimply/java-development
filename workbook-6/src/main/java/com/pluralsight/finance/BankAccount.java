@@ -11,6 +11,15 @@ public class BankAccount implements Valuable{
         this.balance=balance;
     }
 
+    @Override
+    public String toString() {
+        return "BankAccount{" +
+                "name='" + name + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", balance=" + balance +
+                '}';
+    }
+
     public void withdraw(double amount){
         // Check whether the amount can be withdrawn from the account
         if ((balance-=amount)<0) {
@@ -21,8 +30,6 @@ public class BankAccount implements Valuable{
             System.out.printf("Successfully withdrew $%.2f\nRemaining balance : $%.2f\n",amount,balance);
         }
     }
-
-
 
     public void deposit(double amount){
         // Add the deposited amount to balance
