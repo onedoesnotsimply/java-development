@@ -4,10 +4,13 @@ public abstract class FixedAsset implements Valuable{
     protected String name;
     protected double marketValue;
 
-    public void Asset(String name, double marketValue){}
+    public FixedAsset(String name, double marketValue){
+        this.name=name;
+        this.marketValue=marketValue;
+    }
 
     @Override
     public double getValue() {
-        return 0;
+        return marketValue;
     }
 }
