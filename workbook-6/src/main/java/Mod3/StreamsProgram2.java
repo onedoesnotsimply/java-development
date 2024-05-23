@@ -33,14 +33,21 @@ public class StreamsProgram2 {
                 .reduce(0, (temp, person)-> temp += person);
          */
 
+        // Get the oldest persons age
         int oldest = people.stream().mapToInt(Person::getAge).max().getAsInt();
 
+        // Get the youngest persons age
         int youngest = people.stream().mapToInt(Person::getAge).min().getAsInt();
 
+        /*
         // Sort the entire list by age (oldest first)
         List<Person> sortedPeople = people.stream()
                 .sorted((p1, p2) -> Integer.compare(p2.getAge(), p1.getAge())).toList();
-        System.out.println(sortedPeople);
+        // Get the oldest
+        System.out.println(sortedPeople.get(0));
+        // Get the youngest
+        System.out.println(sortedPeople.get(sortedPeople.size()-1));
+         */
 
         System.out.println("Average age : "+avg);
         System.out.println("Oldest : "+oldest);
