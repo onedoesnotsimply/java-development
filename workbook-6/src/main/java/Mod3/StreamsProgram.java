@@ -5,7 +5,7 @@ import com.pluralsight.Person;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Program {
+public class StreamsProgram {
     public static void main(String[] args) {
         // Instantiate ArrayLists and Scanner, populate the people ArrayList
         Scanner scanner = new Scanner(System.in);
@@ -34,7 +34,7 @@ public class Program {
         // Get the average age of the people on the list
         int sum = 0;
         for (Person person : people) {
-            sum+= person.getAge();
+            sum += person.getAge();
         }
         System.out.println("The average age is : "+(sum/people.size()));
 

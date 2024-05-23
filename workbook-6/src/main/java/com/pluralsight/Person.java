@@ -36,6 +36,11 @@ public class Person implements Comparable {
     }
 
     @Override
+    public String toString() {
+        return "|" + firstName + " " + lastName + ", " + age + "|";
+    }
+
+    @Override
     public int compareTo(Object o) {
         // Compare last names
         if (this.lastName.compareTo(((Person) o).getLastName())==0) { // If the last names are the same
