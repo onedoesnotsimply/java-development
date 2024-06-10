@@ -1,8 +1,6 @@
-import com.mysql.cj.jdbc.Driver;
-
 import java.sql.*;
 
-public class Main {
+public class Northwind {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         // Load MySQL Driver
         Class.forName("com.mysql.cj.jdbc.Driver");
