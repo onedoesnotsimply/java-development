@@ -17,7 +17,7 @@ public class Sakila2 {
         // Create datamanager
         SakilaDataManager dataManager = new SakilaDataManager(dataSource);
 
-        // Search for an actor by name
+        // Prompt for an actor's first and last name
         System.out.println("Search for an actor");
         System.out.print("Enter actors first name : ");
         String firstName = scanner.nextLine();
@@ -29,7 +29,7 @@ public class Sakila2 {
         actors.forEach(System.out::println);
 
         // Prompt for an actor id
-        System.out.println("Enter the ID of an actor :");
+        System.out.print("Enter the ID of an actor : ");
         int actorId = scanner.nextInt();
 
         List<Film> films = dataManager.searchForMovies(actorId);

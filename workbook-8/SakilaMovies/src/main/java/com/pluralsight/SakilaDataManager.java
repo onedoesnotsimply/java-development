@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class SakilaDataManager {
     private DataSource dataSource;
@@ -53,13 +52,17 @@ public class SakilaDataManager {
             preparedStatement.setString(2, lastName);
 
             try(ResultSet resultSet = preparedStatement.executeQuery();){
-                while (resultSet.next()){
-                    int id = resultSet.getInt("actor_id");
-                    String firstName1 = resultSet.getString("first_name");
-                    String lastName1 = resultSet.getString("last_name");
+                if (resultSet.next()){
+                    do {
+                        int id = resultSet.getInt("actor_id");
+                        String firstName1 = resultSet.getString("first_name");
+                        String lastName1 = resultSet.getString("last_name");
 
-                    Actor actor = new Actor(id, firstName1, lastName1);
-                    actors.add(actor);
+                        Actor actor = new Actor(id, firstName1, lastName1);
+                        actors.add(actor);
+                    } while (resultSet.next());
+                } else {
+                    System.out.println("No actors found");
                 }
             }
             return actors;

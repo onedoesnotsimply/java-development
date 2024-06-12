@@ -17,13 +17,13 @@ public class Film {
 
     @Override
     public String toString() {
-        return "Film{" +
-                "filmId=" + filmId +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", releaseYear=" + releaseYear +
-                ", length=" + length +
-                '}';
+        return "\tFilm\n" +
+                "--------------------------\n" +
+                "ID :\t" + filmId + '\n' +
+                "Title :\t" + title + '\n' +
+                "Description :\t" + description + '\n' +
+                "Release Year: \t" + releaseYear + '\n' +
+                "Length :\t" + length + '\n';
     }
 
     public int getFilmId() {

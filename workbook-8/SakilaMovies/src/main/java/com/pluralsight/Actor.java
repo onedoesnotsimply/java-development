@@ -13,11 +13,11 @@ public class Actor {
 
     @Override
     public String toString() {
-        return "Actor{" +
-                "actorId=" + actorId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+        return "\tActor\n" +
+                "---------------\n" +
+                "ID :\t" + actorId + '\n' +
+                "First Name :\t" + firstName + '\n' +
+                "Last Name :\t" + lastName + '\n';
     }
 
     public int getActorId() {
