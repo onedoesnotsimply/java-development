@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class SimpleProductDao implements ProductDao {
     private ArrayList<Product> products;
-    private int counter = 4;
+    private int counter = 5;
 
     public SimpleProductDao(){
         this.products = new ArrayList<>();

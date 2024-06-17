@@ -46,6 +46,8 @@ public class NorthwindTradersSpringBootApplication {
 			int id = simpleProductDao.persistProduct(new Product(name, cat, price));
 
 			System.out.println("Product registered with ID = " + id);
+			List<Product> products = simpleProductDao.getAll();
+			products.forEach(System.out::println);
 
 		} else {
 			System.out.println("Exiting program");
