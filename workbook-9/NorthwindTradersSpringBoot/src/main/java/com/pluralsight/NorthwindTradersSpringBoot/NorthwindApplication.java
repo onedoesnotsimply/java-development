@@ -24,6 +24,8 @@ public class NorthwindApplication implements CommandLineRunner {
         System.out.println("""
 			1) List Products
 			2) Add Product
+			3) Delete Product
+			4) Update Product
 			""");
 
         int choice = scanner.nextInt();
@@ -35,9 +37,29 @@ public class NorthwindApplication implements CommandLineRunner {
             addProduct();
             displayProducts();
 
+        } else if (choice == 3) {
+            displayProducts();
+            deleteProduct();
+
+        } else if (choice == 4) {
+            displayProducts();
+            updateProduct();
+
         } else {
             System.out.println("Exiting program");
         }
+    }
+
+    public void updateProduct() {
+        System.out.println("Enter the ID of the product you would like to update");
+        int id = scanner.nextInt();
+
+    }
+
+    public void deleteProduct() {
+        System.out.println("Enter the ID of the product you would like to delete");
+        int id = scanner.nextInt();
+        productDao.deleteProduct(id);
     }
 
     public void displayProducts() {
@@ -55,7 +77,5 @@ public class NorthwindApplication implements CommandLineRunner {
         double price = scanner.nextDouble();
 
         productDao.persistProduct(new Product(name, cat, price));
-
-        //System.out.println("Product registered with ID = " + id);
     }
 }

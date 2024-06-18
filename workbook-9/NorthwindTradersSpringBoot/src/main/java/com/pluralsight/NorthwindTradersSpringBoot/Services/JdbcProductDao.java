@@ -86,13 +86,13 @@ public class JdbcProductDao implements ProductDao {
     }
 
     @Override
-    public void deleteProduct(Product product) {
+    public void deleteProduct(int id) {
         String delete = "DELETE FROM products WHERE productid = ?";
 
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(delete);){
 
-            preparedStatement.setInt(1,product.getProductId());
+            preparedStatement.setInt(1,id);
 
             int rows = preparedStatement.executeUpdate();
             if (rows>0) {
@@ -102,5 +102,10 @@ public class JdbcProductDao implements ProductDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void updateProduct(int id) {
+        //String update = "UPDATE products SET "
     }
 }

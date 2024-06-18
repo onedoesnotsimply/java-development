@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //@Component
-public class SimpleProductDao implements ProductDao {
+/*public class SimpleProductDao implements ProductDao {
     private ArrayList<Product> products;
     private int counter = 5;
 
@@ -35,8 +35,10 @@ public class SimpleProductDao implements ProductDao {
     }
 
     @Override
-    public void deleteProduct(Product product) {
+    public void deleteProduct(int id) {
 
     }
 
 }
+ */
+
