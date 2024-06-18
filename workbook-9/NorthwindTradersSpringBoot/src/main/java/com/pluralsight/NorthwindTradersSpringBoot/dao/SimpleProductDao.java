@@ -23,15 +23,20 @@ public class SimpleProductDao implements ProductDao {
 
 
     @Override
-    public int persistProduct(Product product) {
+    public void persistProduct(Product product) {
         int id = counter++;
         products.add(new Product(id, product.getName(),product.getCategory(),product.getPrice()));
-        return id;
+        //return id;
     }
 
     @Override
     public List<Product> getAll() {
         return products;
+    }
+
+    @Override
+    public void deleteProduct(Product product) {
+
     }
 
 }

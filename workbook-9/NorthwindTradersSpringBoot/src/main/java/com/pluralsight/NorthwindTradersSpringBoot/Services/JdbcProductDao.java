@@ -24,8 +24,38 @@ public class JdbcProductDao implements ProductDao {
     }
 
     @Override
-    public int persistProduct(Product product) {
-        return 0;
+    public void persistProduct(Product product) {
+        // Insert
+        String insert = "INSERT INTO products (productname, categoryid, unitprice) VALUES (?,?,?)";
+        // Select (to get the category id number
+        String query = "SELECT categoryid FROM categories WHERE categoryname = ?";
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement1 = connection.prepareStatement(insert);
+            PreparedStatement preparedStatement2 = connection.prepareStatement(query);){
+
+            // Start by getting the needed information
+            preparedStatement2.setString(1, product.getCategory());
+
+            try(ResultSet resultSet = preparedStatement2.executeQuery()) {
+                if (resultSet.next()){
+                    do {
+                        //preparedStatement1.setInt(1, product.getProductId());
+                        preparedStatement1.setString(1, product.getName());
+                        preparedStatement1.setString(2, resultSet.getString("categoryid"));
+                        preparedStatement1.setDouble(3,product.getPrice());
+
+                        int rows = preparedStatement1.executeUpdate();
+                        if (rows > 0){
+                            System.out.println("Product added successfully");
+                        }
+                    } while (resultSet.next());
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        //return 0;
     }
 
     @Override
@@ -53,5 +83,24 @@ public class JdbcProductDao implements ProductDao {
             throw new RuntimeException(e);
         }
         return products;
+    }
+
+    @Override
+    public void deleteProduct(Product product) {
+        String delete = "DELETE FROM products WHERE productid = ?";
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(delete);){
+
+            preparedStatement.setInt(1,product.getProductId());
+
+            int rows = preparedStatement.executeUpdate();
+            if (rows>0) {
+                System.out.println("Product removed successfully");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

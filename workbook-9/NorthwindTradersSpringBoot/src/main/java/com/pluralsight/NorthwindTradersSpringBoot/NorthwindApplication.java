@@ -54,8 +54,8 @@ public class NorthwindApplication implements CommandLineRunner {
         System.out.println("Enter the price of the product");
         double price = scanner.nextDouble();
 
-        int id = productDao.persistProduct(new Product(name, cat, price));
+        productDao.persistProduct(new Product(name, cat, price));
 
-        System.out.println("Product registered with ID = " + id);
+        //System.out.println("Product registered with ID = " + id);
     }
 }
