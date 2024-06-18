@@ -105,7 +105,62 @@ public class JdbcProductDao implements ProductDao {
     }
 
     @Override
-    public void updateProduct(int id) {
-        //String update = "UPDATE products SET "
+    public void updateProduct(int id, Product product) {
+        String update = "UPDATE products SET productname = ?, categoryid = ?, unitprice = ? WHERE productid = ?";
+        String catId = "SELECT categoryid FROM categories WHERE categoryname = ?";
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement1 = connection.prepareStatement(update);
+            PreparedStatement preparedStatement2 = connection.prepareStatement(catId)) {
+
+            preparedStatement2.setString(1,product.getCategory());
+
+            try(ResultSet resultSet = preparedStatement2.executeQuery();){
+                if (resultSet.next()){
+                    do {
+                        preparedStatement1.setString(1, product.getName());
+                        preparedStatement1.setInt(2, resultSet.getInt("categoryid"));
+                        preparedStatement1.setDouble(3,product.getPrice());
+                        preparedStatement1.setInt(4,id);
+
+                        int rows = preparedStatement1.executeUpdate();
+
+                        if (rows>0){
+                            System.out.println("Product with ID of "+id+" updated successfully");
+                        }
+
+                    }while (resultSet.next());
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Product searchProduct(int id) {
+        Product product = null;
+        String query = "SELECT productid, productname, categoryname, unitprice FROM " +
+                "products JOIN categories ON (products.categoryid = categories.categoryid) " +
+                "WHERE productid = ?";
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);){
+
+            preparedStatement.setInt(1,id);
+
+            try(ResultSet resultSet = preparedStatement.executeQuery();){
+                if (resultSet.next()){
+                    do {
+                        product = new Product(resultSet.getInt(1), resultSet.getString(2),
+                                resultSet.getString(3),resultSet.getDouble(4));
+
+                    } while (resultSet.next());
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return product;
     }
 }
