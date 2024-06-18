@@ -1,8 +1,7 @@
 package com.pluralsight.NorthwindTradersSpringBoot.dao;
 
 import com.pluralsight.NorthwindTradersSpringBoot.model.Product;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,13 +12,14 @@ public class SimpleProductDao implements ProductDao {
     private ArrayList<Product> products;
     private int counter = 5;
 
+    //@Autowired
     public SimpleProductDao(){
         this.products = new ArrayList<>();
 
-        this.products.add(0, new Product(1,"Shrimp","Seafood",12.99));
-        this.products.add(1, new Product(2,"Cake Mix","Baking",1.99));
-        this.products.add(2, new Product(3,"Lettuce","Fresh",2.99));
-        this.products.add(3, new Product(4,"Sprinkles","Baking",1.99));
+        this.products.add(new Product(1,"Shrimp","Seafood",12.99));
+        this.products.add(new Product(2,"Cake Mix","Baking",1.99));
+        this.products.add(new Product(3,"Lettuce","Fresh",2.99));
+        this.products.add(new Product(4,"Sprinkles","Baking",1.99));
     };
 
 
