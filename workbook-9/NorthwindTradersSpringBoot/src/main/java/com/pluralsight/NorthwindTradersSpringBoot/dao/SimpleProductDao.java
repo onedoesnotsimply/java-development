@@ -1,13 +1,12 @@
 package com.pluralsight.NorthwindTradersSpringBoot.dao;
 
 import com.pluralsight.NorthwindTradersSpringBoot.model.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+//@Component
 public class SimpleProductDao implements ProductDao {
     private ArrayList<Product> products;
     private int counter = 5;

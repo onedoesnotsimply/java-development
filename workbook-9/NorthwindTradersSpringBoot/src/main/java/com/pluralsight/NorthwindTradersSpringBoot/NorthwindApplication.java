@@ -1,12 +1,11 @@
 package com.pluralsight.NorthwindTradersSpringBoot;
 
 import com.pluralsight.NorthwindTradersSpringBoot.dao.ProductDao;
-import com.pluralsight.NorthwindTradersSpringBoot.dao.SimpleProductDao;
 import com.pluralsight.NorthwindTradersSpringBoot.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.Scanner;
