@@ -3,7 +3,6 @@ package com.pluralsight.NorthwindTradersAPI.DAO;
 import com.pluralsight.NorthwindTradersAPI.Model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -24,8 +23,22 @@ public class JdbcProductDao implements ProductDao {
     }
 
     @Override
-    public void persistProduct(Product product) {
+    public Product insertProduct(Product product) {
+        String query = "INSERT INTO products (productname, categoryid, unitprice) VALUES (?,?,?)";
 
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);){
+
+            preparedStatement.setString(1,product.getProductName());
+            preparedStatement.setInt(2,product.getCategoryId());
+            preparedStatement.setDouble(3,product.getUnitPrice());
+
+            int rows = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return product;
     }
 
     @Override
@@ -59,6 +72,21 @@ public class JdbcProductDao implements ProductDao {
 
     @Override
     public void updateProduct(int id, Product product) {
+        String query = "UPDATE products SET productname = ?, categoryid = ?, unitprice = ? WHERE productid = ?";
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);){
+
+            preparedStatement.setString(1, product.getProductName());
+            preparedStatement.setInt(2,product.getCategoryId());
+            preparedStatement.setDouble(3,product.getUnitPrice());
+            preparedStatement.setInt(4,id);
+
+            int rows = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

@@ -70,4 +70,38 @@ public class JdbcCategoryDao implements CategoryDao {
 
         return category;
     }
+
+    @Override
+    public Category insertCategory(Category category) {
+        String query = "INSERT INTO categories (categoryname) VALUES (?)";
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);){
+
+            preparedStatement.setString(1, category.getCategoryName());
+
+            int rows = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return category;
+    }
+
+    @Override
+    public void updateCategory(int id, Category category) {
+        String query = "UPDATE categories SET categoryname = ? WHERE categoryid = ?";
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);){
+
+            preparedStatement.setString(1, category.getCategoryName());
+            preparedStatement.setInt(2,id);
+
+            int rows = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
