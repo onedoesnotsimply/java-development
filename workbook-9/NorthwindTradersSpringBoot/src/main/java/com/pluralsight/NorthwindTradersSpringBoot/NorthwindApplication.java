@@ -47,31 +47,6 @@ public class NorthwindApplication implements CommandLineRunner {
             }
             choice = menu();
         }
-
-        /*
-        if (choice == 1) {
-            displayProducts();
-
-        } else if (choice == 2) {
-            addProduct();
-            displayProducts();
-
-        } else if (choice == 3) {
-            displayProducts();
-            deleteProduct();
-
-        } else if (choice == 4) {
-            displayProducts();
-            updateProduct();
-
-        } else if (choice == 5) {
-            //displayProducts();
-            searchProduct();
-        }
-        else {
-            System.out.println("index out of range");
-        }
-        */
     }
 
     public int menu() {
